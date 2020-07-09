@@ -22,8 +22,7 @@ namespace NamePicker
         }
         private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            SelectedColor = ClrPcker_Background.SelectedColor.Value.R.ToString() + ClrPcker_Background.SelectedColor.Value.G.ToString() + ClrPcker_Background.SelectedColor.Value.B.ToString();
-            lb_color.Content = "#" + SelectedColor;
+            lb_color.Content = SelectedColor = "#" + ClrPcker_Background.SelectedColor.Value.R.ToString() + ClrPcker_Background.SelectedColor.Value.G.ToString() + ClrPcker_Background.SelectedColor.Value.B.ToString();
         }
         private void btn_convert_Click(object sender, RoutedEventArgs e)
         {
@@ -62,6 +61,7 @@ namespace NamePicker
                 sub = strIn[i];
                 // XOR Comparing bits of the char "sub" with bits of the "key" (times the iterator to avoid double letters a bit (+1 because "times 0" is stupid.))
                 sub = (char)(sub ^ (key * (i + 1)));
+                // make sure resulting chars are in the "letter" range of unicode
                 sub = (char)((sub % 26) + 97);
                 strOut.Append(sub);
             }
@@ -72,6 +72,10 @@ namespace NamePicker
             {
                 strOut[1] = vocals[(strOut[1] % vocals.Length)];
             }
+            // a lil loggin'
+            Console.WriteLine("Selected Color: #" + strIn);
+            Console.WriteLine("Selected Lenght: " + length);
+            Console.WriteLine("Output: " + strOut);
             return strOut.ToString();
         }
         
