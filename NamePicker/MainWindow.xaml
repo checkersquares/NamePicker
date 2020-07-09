@@ -1,0 +1,45 @@
+﻿<Window x:Class="NamePicker.MainWindow"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NamePicker"
+        mc:Ignorable="d"
+        Title="Color Name Generator" Height="180" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <xctk:ColorPicker Name="ClrPcker_Background" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" ColorMode="ColorCanvas"></xctk:ColorPicker>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lb_result" Content="" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"/>
+            <Button x:Name="btn_convert" Content="Convert" Grid.Column="1" Click="btn_convert_Click"/>
+            <Button x:Name="btn_clip" Content="Clip ⎘" Grid.Column="1" Grid.Row="1" Click="btn_clip_Click"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tb_length" TextWrapping="Wrap" Text="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" TextChanged="tb_length_TextChanged" />
+                <CheckBox x:Name="cb_vocal" Content="Make second letter Vocal" Grid.Row="1" VerticalContentAlignment="Center" Padding="0" IsChecked="True" Grid.ColumnSpan="2" BorderBrush="Black"/>
+                <Label x:Name="label" Content="Length" Grid.Column="1" BorderThickness="1" BorderBrush="Black"/>
+            </Grid>
+        </Grid>
+        <Label x:Name="lb_color" Content="" Grid.Row="1" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+    </Grid>
+</Window>
